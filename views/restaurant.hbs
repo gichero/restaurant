@@ -1,0 +1,50 @@
+<h1>Restaurant</h1>
+restaurant address:
+{{restaurant_address}}
+
+
+    {{ result.name}} <br>
+        {{result.address}} <br>
+        {{result.category}}
+
+
+
+<h1>{{name}}</h1>
+<h2>Address : {{address}}</h2>
+<h2>Category : {{category}}</h2>
+<h2>Reviews : </h2>
+
+{{#if review}}
+{{#each review}}
+<li>Review {{name}}: {{title}} </li>
+<li>{{stars}} stars</li>
+<li>{{review}}</li>
+<br>
+{{/each}}
+{{/if}}
+
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src= {{url}} allowfullscreen>
+</iframe>
+
+
+<h2>Write Review</h2>
+<form action="/submit_review/{{restaurant.restaurantid}}" method="POST">
+  <label>Title: </label><br>
+  <input type="text" name="title"><br>
+  <label>Stars:</label>
+  <!-- alternatively use radio buttons -->
+  <select name="stars">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+  <label>Contents:</label><br>
+  <textarea name="review" cols="40" rows="6"></textarea><br>
+  <button type="submit">Submit</button>
+</form>
